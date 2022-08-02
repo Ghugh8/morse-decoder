@@ -35,11 +35,23 @@ const MORSE_TABLE = {
     '---..':  '8',
     '----.':  '9',
     '-----':  '0',
+    ' ': ' ',
 };
 
 function decode(expr) {
-    // write your solution here
+const dotsAndDashes = expr.replaceAll('11', '-').replaceAll('10', '.').replaceAll("**********", '0 0');
+console.log(dotsAndDashes)
+const split = /\D+/g;
+const massDD = dotsAndDashes.match(split);
+console.log(massDD)
+let str = '';
+for (let i = 0; i <= (massDD.length-1) ; i++) {
+    str += MORSE_TABLE[massDD[i]];
 }
+return (str)
+}
+
+console.log(decode("00000000100000111010101010111100111011100000001011111110101011111010101010101010"))
 
 module.exports = {
     decode
